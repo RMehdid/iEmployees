@@ -24,7 +24,7 @@ public class GridViewAdapter extends ArrayAdapter<Employee> {
 
         if (null == v) {
             LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.list_item, null);
+            v = inflater.inflate(R.layout.grid_item, null);
         }
 
         Employee employee = getItem(position);
