@@ -17,7 +17,7 @@
 
 
         <ImageView
-            android:id="@+id/employeeImage"
+            android:id="@+id/imageView"
             android:layout_width="66dp"
             android:layout_height="66dp"
             android:src="@drawable/profile_placeholder"
@@ -28,7 +28,7 @@
 
 
     <TextView
-        android:id="@+id/employeeNameText"
+        android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"

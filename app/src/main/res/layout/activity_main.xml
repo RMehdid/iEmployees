@@ -19,59 +19,21 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="382dp"
-        android:layout_height="445dp"
-        android:layout_margin="16dp"
-        android:visibility="visible">
+    <ViewStub
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/stub_list"
+        android:layout_margin="10dp"
+        android:inflatedId="@+id/showLayout"
+        android:layout="@layout/my_listview"/>
 
-        <include
-            android:id="@+id/list_profile"
-            layout="@layout/list_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp" />
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-
-<!--    <LinearLayout-->
-<!--        android:id="@+id/listLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" >-->
-
-<!--        <include-->
-<!--            android:id="@+id/list_profile1"-->
-<!--            layout="@layout/list_profile"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="16dp" />-->
-
-<!--    </LinearLayout>-->
-
-
-<!--    <GridLayout-->
-<!--        android:id="@+id/gridLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content" >-->
-
-<!--        <include-->
-<!--            android:id="@+id/grid_profile1"-->
-<!--            layout="@layout/grid_profile"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-
-<!--            android:layout_margin="16dp" />-->
-
-<!--        <include-->
-<!--            android:id="@+id/grid_profile2"-->
-<!--            layout="@layout/grid_profile"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="end"-->
-<!--            android:layout_margin="16dp" />-->
-<!--    </GridLayout>-->
+    <ViewStub
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/stub_grid"
+        android:layout_margin="10dp"
+        android:inflatedId="@+id/showLayout"
+        android:layout="@layout/my_gridview"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

@@ -14,7 +14,7 @@
         app:cardBackgroundColor="@color/blue">
 
         <ImageView
-            android:id="@+id/employeeImage"
+            android:id="@+id/imageView"
             android:layout_width="150dp"
             android:layout_height="130dp"
             android:src="@drawable/profile_placeholder"
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_below="@id/employeeImage">
+            android:layout_below="@id/imageView">
 
             <ImageView
                 android:id="@+id/image1"
@@ -48,7 +48,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/employeeNameText"
+        android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
