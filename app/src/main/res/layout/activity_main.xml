@@ -42,6 +42,7 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         android:contentDescription="Add Employee"
+        android:onClick="newEmployeeBtnOnClick"
         android:src="@drawable/ic_add" />
 
 </LinearLayout>

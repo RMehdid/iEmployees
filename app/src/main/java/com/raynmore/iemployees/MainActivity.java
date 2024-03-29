@@ -54,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
         gridView.setOnItemClickListener(onItemClick);
     }
 
+    public void newEmployeeBtnOnClick(View view) {
+        NewEmployeeAdapter dialog = new NewEmployeeAdapter();
+        dialog.show(getSupportFragmentManager(), "NewEmployeeAdapter");
+    }
+
     private void saveSharedPreferences() {
         SharedPreferences sharedPreferences = getSharedPreferences ("ViewMode", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
