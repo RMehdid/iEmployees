@@ -60,7 +60,8 @@ public class GridViewAdapter extends ArrayAdapter<Employee> {
         btnMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                MessageEmailAdapter dialog = new MessageEmailAdapter(employee);
+                dialog.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "MessageEmailAdapter");
             }
         });
 
