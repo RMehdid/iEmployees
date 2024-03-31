@@ -36,22 +36,54 @@
         android:text="Employee name"
         android:textSize="22sp" />
 
-    <ImageView
-        android:id="@+id/image1"
+    <FrameLayout
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_gravity="bottom"
-        android:layout_marginHorizontal="4dp"
         android:background="@drawable/circular_background"
-        android:src="@drawable/ic_call" />
+        android:layout_marginHorizontal="4dp"
+        android:layout_gravity="bottom">
 
-    <ImageView
-        android:id="@+id/image2"
+        <Button
+            android:id="@+id/btnCall"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="4dp"
+            android:background="@android:color/transparent"
+            android:text="" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:padding="8dp"
+            android:src="@drawable/ic_call" />
+
+    </FrameLayout>
+
+    <FrameLayout
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_gravity="bottom"
-        android:layout_marginHorizontal="4dp"
         android:background="@drawable/circular_background"
-        android:src="@drawable/ic_message" />
+        android:layout_marginHorizontal="4dp"
+        android:layout_gravity="bottom">
+
+        <Button
+            android:id="@+id/btnMessage"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="4dp"
+            android:background="@android:color/transparent"
+            android:text="" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:padding="8dp"
+            android:src="@drawable/ic_message" />
+
+    </FrameLayout>
 
 </LinearLayout>

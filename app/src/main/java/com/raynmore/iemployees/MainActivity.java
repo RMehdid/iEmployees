@@ -51,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("ViewMode", MODE_PRIVATE);
         currentViewMode = sharedPreferences.getInt("currentViewMode", VIEW_MODE_LIST);
-
-        listView.setOnItemLongClickListener(onItemLongClick);
-        gridView.setOnItemLongClickListener(onItemLongClick);
     }
 
     public void newEmployeeBtnOnClick(View view) {
@@ -95,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setAdapters() {
-        if(VIEW_MODE_LIST == currentViewMode) {
+        if (VIEW_MODE_LIST == currentViewMode) {
             ListViewAdapter listViewAdapter = new ListViewAdapter(this, R.layout.list_item, employeeList);
             listView.setAdapter(listViewAdapter);
         } else {
@@ -103,15 +100,4 @@ public class MainActivity extends AppCompatActivity {
             gridView.setAdapter(gridViewAdapter);
         }
     }
-
-    AdapterView.OnItemLongClickListener onItemLongClick = new AdapterView.OnItemLongClickListener() {
-        @Override
-        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-            NewEmployeeAdapter dialog = new NewEmployeeAdapter(employeeList.get(i));
-            dialog.show(getSupportFragmentManager(), "NewEmployeeAdapter");
-
-            return true;
-        }
-    };
-
 }
