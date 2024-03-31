@@ -14,6 +14,14 @@ import androidx.fragment.app.DialogFragment;
 
 public class NewEmployeeAdapter extends DialogFragment {
 
+    private Employee employee;
+
+    NewEmployeeAdapter() { }
+
+    NewEmployeeAdapter(Employee employee) {
+        this.employee = employee;
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -21,8 +29,19 @@ public class NewEmployeeAdapter extends DialogFragment {
 
         LayoutInflater inflater = requireActivity().getLayoutInflater();
 
-
         View view = inflater.inflate(R.layout.new_employee_popup, null);
+
+        if (employee != null) {
+            EditText editName = view.findViewById(R.id.nameTextField);
+            editName.setText(employee.getName());
+
+            EditText editPhone = view.findViewById(R.id.phoneTextField);
+            editPhone.setText(employee.getPhoneNumber());
+
+            EditText editEmail = view.findViewById(R.id.emailTextField);
+            editEmail.setText(employee.getEmail());
+        }
+
         builder.setView(view)
                 .setTitle("Add new employee")
                 // Add action buttons
@@ -31,16 +50,23 @@ public class NewEmployeeAdapter extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         EditText editName = view.findViewById(R.id.nameTextField);
                         EditText editPhone = view.findViewById(R.id.phoneTextField);
+                        EditText editEmail = view.findViewById(R.id.emailTextField);
 
                         // Get the text from the EditText views
                         String name = editName.getText().toString();
                         String phone = editPhone.getText().toString();
+                        String email = editEmail.getText().toString();
 
-                        Employee newEmployee = new Employee(name, phone, R.drawable.profile_placeholder);
+                        Employee newEmployee = new Employee(name, phone, email, R.drawable.profile_placeholder);
 
                         DatabaseHelper dbHelper = new DatabaseHelper(requireContext());
-                        boolean success = dbHelper.addEmployee(newEmployee);
-                        Toast.makeText(requireContext(), "Success: " + success, Toast.LENGTH_SHORT).show();
+
+                        if (employee != null) {
+                            newEmployee.setId(employee.getId());
+                            dbHelper.updateEmployee(newEmployee);
+                        } else {
+                            dbHelper.addEmployee(newEmployee);
+                        }
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

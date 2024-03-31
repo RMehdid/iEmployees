@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewStub stubList;
     private ListView listView;
     private GridView gridView;
-    private List<Employee> employeeList;
+    private List<Employee> employeeList = new ArrayList<>();
     private int currentViewMode = 0;
 
     static final int VIEW_MODE_LIST = 0;
@@ -44,14 +44,16 @@ public class MainActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.mylistview);
         gridView = findViewById(R.id.mygridview);
-        
-        getEmployeeList();
+
+
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        employeeList = dbHelper.getEmployees();
 
         SharedPreferences sharedPreferences = getSharedPreferences("ViewMode", MODE_PRIVATE);
         currentViewMode = sharedPreferences.getInt("currentViewMode", VIEW_MODE_LIST);
 
-        listView.setOnItemClickListener(onItemClick);
-        gridView.setOnItemClickListener(onItemClick);
+        listView.setOnItemLongClickListener(onItemLongClick);
+        gridView.setOnItemLongClickListener(onItemLongClick);
     }
 
     public void newEmployeeBtnOnClick(View view) {
@@ -102,18 +104,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void getEmployeeList() {
-        employeeList = new ArrayList<>();
-        employeeList.add(new Employee("Samy Mehdid", "+213540408051", R.drawable.profile_placeholder));
-        employeeList.add(new Employee("Chawki Belhaddad", "+213540408051", R.drawable.profile_placeholder));
-        employeeList.add(new Employee("Professor X", "+213540408051", R.drawable.profile_placeholder));
-    }
-
-    AdapterView.OnItemClickListener onItemClick = new AdapterView.OnItemClickListener() {
-
+    AdapterView.OnItemLongClickListener onItemLongClick = new AdapterView.OnItemLongClickListener() {
         @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Toast.makeText(getApplicationContext(), employeeList.get(position).getName(), Toast.LENGTH_SHORT).show();
+        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            NewEmployeeAdapter dialog = new NewEmployeeAdapter(employeeList.get(i));
+            dialog.show(getSupportFragmentManager(), "NewEmployeeAdapter");
+
+            return true;
         }
     };
 
