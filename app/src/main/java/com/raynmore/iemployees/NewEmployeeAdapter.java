@@ -69,11 +69,20 @@ public class NewEmployeeAdapter extends DialogFragment {
                         }
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
                 });
+
+        if (employee != null) {
+            builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // Logic to delete the employee
+                }
+            });
+        }
+
         return builder.create();
     }
 }
