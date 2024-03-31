@@ -75,6 +75,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void deleteEmployee(@NonNull int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String selection = COLUMN_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(id)};
+
+        int rowsAffected = db.delete(EMPLOYEE_TABLE, selection, selectionArgs);
+
+        // Check if the deletion was successful
+        if (rowsAffected > 0) {
+            Log.d("Database", "Employee deleted successfully");
+        } else {
+            Log.d("Database", "Failed to delete employee");
+        }
+    }
+
     public ArrayList<Employee> getEmployees() {
 
         ArrayList<Employee> employees = new ArrayList<>();

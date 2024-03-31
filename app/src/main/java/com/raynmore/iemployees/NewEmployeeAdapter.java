@@ -78,7 +78,8 @@ public class NewEmployeeAdapter extends DialogFragment {
         if (employee != null) {
             builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    // Logic to delete the employee
+                    DatabaseHelper dbHelper = new DatabaseHelper(requireContext());
+                    dbHelper.deleteEmployee(employee.getId());
                 }
             });
         }
