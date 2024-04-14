@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iEmployees</string>
+    <string name="recherche_hint">بحث عن موظف</string>
+    <string name="name_hint">اسم</string>
+    <string name="phone_hint">رقم الهاتف</string>
+    <string name="email_hint">بريد إلكتروني</string>
+    <string name="add_new_employee">إضافة موظف جديد</string>
+    <string name="confirm">يتأكد</string>
+    <string name="cancel">إلغاء</string>
+    <string name="delete">حذف</string>
+</resources>

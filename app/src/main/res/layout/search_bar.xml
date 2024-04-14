@@ -29,7 +29,7 @@
             android:layout_weight="1"
             android:layout_marginStart="16dp"
             android:textColorHint="@color/white"
-            android:hint="Search for an employee">
+            android:hint="@string/recherche_hint">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"

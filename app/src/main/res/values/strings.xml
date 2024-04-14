@@ -1,3 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">iEmployees</string>
+    <string name="recherche_hint">Recherche dun employé</string>
+    <string name="name_hint">Nom</string>
+    <string name="phone_hint">Numero de telephone</string>
+    <string name="email_hint">Email</string>
+    <string name="add_new_employee">ajouter un nouvel employé</string>
+    <string name="confirm">Confirmer</string>
+    <string name="cancel">Annuler</string>
+    <string name="delete">Supprimer</string>
 </resources>

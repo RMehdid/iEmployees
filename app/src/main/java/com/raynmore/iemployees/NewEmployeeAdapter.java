@@ -43,9 +43,9 @@ public class NewEmployeeAdapter extends DialogFragment {
         }
 
         builder.setView(view)
-                .setTitle("Add new employee")
+                .setTitle(getstring(R.string.add_new_employee))
                 // Add action buttons
-                .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getstring(R.string.confirm), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         EditText editName = view.findViewById(R.id.nameTextField);
@@ -69,14 +69,14 @@ public class NewEmployeeAdapter extends DialogFragment {
                         }
                     }
                 })
-                .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNeutralButton(getstring(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
                 });
 
         if (employee != null) {
-            builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     DatabaseHelper dbHelper = new DatabaseHelper(requireContext());
                     dbHelper.deleteEmployee(employee.getId());

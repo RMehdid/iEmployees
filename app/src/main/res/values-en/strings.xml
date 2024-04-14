@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">iEmployees</string>
+    <string name="recherche_hint">Search for an employee</string>
+    <string name="name_hint">Name</string>
+    <string name="phone_hint">Phone number</string>
+    <string name="email_hint">Email</string>
+    <string name="add_new_employee">add a new employee</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">DELETE</string>
+</resources>
