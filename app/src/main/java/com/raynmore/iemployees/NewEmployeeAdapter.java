@@ -43,9 +43,9 @@ public class NewEmployeeAdapter extends DialogFragment {
         }
 
         builder.setView(view)
-                .setTitle(getstring(R.string.add_new_employee))
+                .setTitle(getString(R.string.add_new_employee))
                 // Add action buttons
-                .setPositiveButton(getstring(R.string.confirm), new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         EditText editName = view.findViewById(R.id.nameTextField);
@@ -69,7 +69,7 @@ public class NewEmployeeAdapter extends DialogFragment {
                         }
                     }
                 })
-                .setNeutralButton(getstring(R.string.cancel), new DialogInterface.OnClickListener() {
+                .setNeutralButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
