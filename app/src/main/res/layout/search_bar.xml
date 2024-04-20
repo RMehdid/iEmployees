@@ -17,13 +17,26 @@
         android:paddingVertical="8dp">
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="Search Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
             android:layout_gravity="center_vertical"
+            android:contentDescription="Search Icon"
             android:src="@drawable/ic_search" />
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:textColorHint="@color/white"
+            android:hint="@string/recherche_hint"
+            android:id="@+id/recherche"
+            android:inputType="text"
+            android:padding="0dp"
+            android:layout_gravity="center_vertical"
+            android:imeOptions="actionSearch"/>
 
-        <com.google.android.material.textfield.TextInputLayout
+
+        <!--<com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -34,11 +47,12 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/recherche"
                 android:inputType="text"
                 android:padding="0dp"
                 android:layout_gravity="center_vertical"
                 android:imeOptions="actionSearch"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>-->
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

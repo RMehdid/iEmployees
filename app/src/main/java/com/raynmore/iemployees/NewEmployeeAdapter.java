@@ -3,6 +3,7 @@ package com.raynmore.iemployees;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,8 +65,12 @@ public class NewEmployeeAdapter extends DialogFragment {
                         if (employee != null) {
                             newEmployee.setId(employee.getId());
                             dbHelper.updateEmployee(newEmployee);
+
                         } else {
                             dbHelper.addEmployee(newEmployee);
+                            Intent intent = new Intent(getContext(),MainActivity.class);
+                            intent.putExtra("test","employer ajouter");
+                            startActivity(intent);
                         }
                     }
                 })
@@ -80,9 +85,13 @@ public class NewEmployeeAdapter extends DialogFragment {
                 public void onClick(DialogInterface dialog, int id) {
                     DatabaseHelper dbHelper = new DatabaseHelper(requireContext());
                     dbHelper.deleteEmployee(employee.getId());
+                    Intent intent = new Intent(getContext(),MainActivity.class);
+                    intent.putExtra("test","employer supprimer");
+                    startActivity(intent);
                 }
             });
         }
+
 
         return builder.create();
     }

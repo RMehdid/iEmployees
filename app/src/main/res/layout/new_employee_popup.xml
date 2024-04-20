@@ -6,6 +6,7 @@
     android:padding="36dp">
 
     <!-- Text fields -->
+
     <EditText
         android:id="@+id/nameTextField"
         android:layout_width="match_parent"

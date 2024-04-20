@@ -116,4 +116,65 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return employees;
     }
+    /**public ArrayList<Employee> searchEmployees(String query) {
+        ArrayList<Employee> searchResults = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {COLUMN_ID, COLUMN_NAME, COLUMN_PHONE_NUMBER, COLUMN_EMAIL, COLUMN_IMAGE_URL};
+        String selection = COLUMN_NAME + " LIKE ?";
+        String[] selectionArgs = {"%" + query + "%"};
+
+        Cursor cursor = db.query(
+                EMPLOYEE_TABLE,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID));
+                String name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME));
+                String phone = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PHONE_NUMBER));
+                String email = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL));
+                int image = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IMAGE_URL));
+
+                searchResults.add(new Employee(id, name, phone, email, image));
+            } while (cursor.moveToNext());
+
+            cursor.close();
+        }
+
+        return searchResults;
+    }**/
+    /**public ArrayList<Employee> searchEmployees(String query) {
+        ArrayList<Employee> employees = new ArrayList<>();
+
+        String queryString = "SELECT * FROM " + EMPLOYEE_TABLE +
+                " WHERE name LIKE '%" + query + "%'";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String phone = cursor.getString(2);
+                String email = cursor.getString(3);
+                int image = cursor.getInt(4);
+
+                employees.add(new Employee(id, name, phone, email, image));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return employees;
+    }**/
+
+
+
 }

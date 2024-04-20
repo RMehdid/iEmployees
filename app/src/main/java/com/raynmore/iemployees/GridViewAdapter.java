@@ -49,7 +49,7 @@ public class GridViewAdapter extends ArrayAdapter<Employee> {
 
                 if (employee.getPhoneNumber() != null && !employee.getPhoneNumber().isEmpty()) {
                     Intent intent = new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:" + employee.getPhoneNumber()));
+                    intent.setData(Uri.parse("tel:0" + employee.getPhoneNumber()));
                     mContext.startActivity(intent);
                 } else {
                     Toast.makeText(mContext, "Phone number not available", Toast.LENGTH_SHORT).show();
@@ -76,4 +76,5 @@ public class GridViewAdapter extends ArrayAdapter<Employee> {
 
         return v;
     }
+
 }
