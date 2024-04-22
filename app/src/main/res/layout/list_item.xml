@@ -21,6 +21,8 @@
             android:layout_width="66dp"
             android:layout_height="66dp"
             android:src="@drawable/profile_placeholder"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
             android:contentDescription="Employee picture" />
 
     </androidx.cardview.widget.CardView>

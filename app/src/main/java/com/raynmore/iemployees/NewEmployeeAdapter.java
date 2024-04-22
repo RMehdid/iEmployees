@@ -79,7 +79,6 @@ public class NewEmployeeAdapter extends DialogFragment {
                         String phone = editPhone.getText().toString();
                         String email = editEmail.getText().toString();
 
-                        int l = R.drawable.profile_placeholder;
                         Employee newEmployee = new Employee(name, phone, email, image);
 
                         DatabaseHelper dbHelper = new DatabaseHelper(requireContext());
@@ -87,13 +86,13 @@ public class NewEmployeeAdapter extends DialogFragment {
                         if (employee != null) {
                             newEmployee.setId(employee.getId());
                             dbHelper.updateEmployee(newEmployee);
-
                         } else {
                             dbHelper.addEmployee(newEmployee);
-                            Intent intent = new Intent(getContext(), MainActivity.class);
-                            intent.putExtra("test", "employer ajouter");
-                            startActivity(intent);
+
                         }
+                        Intent intent = new Intent(getContext(), MainActivity.class);
+                        intent.putExtra("test", "changes applied");
+                        startActivity(intent);
                     }
                 })
                 .setNeutralButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
@@ -136,7 +135,7 @@ public class NewEmployeeAdapter extends DialogFragment {
             assert selectedImageUri != null;
 
             Log.d("ImageUri", "" + selectedImageUri);
-            image = "" + selectedImageUri;
+            image = selectedImageUri.toString();
 //            employee.setImageId("" + selectedImageUri);
         }
     }

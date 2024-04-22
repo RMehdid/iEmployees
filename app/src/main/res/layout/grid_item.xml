@@ -20,6 +20,8 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
             android:src="@drawable/profile_placeholder"
             android:contentDescription="Employee picture" />
 
