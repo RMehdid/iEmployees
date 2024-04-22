@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class GridViewAdapter extends ArrayAdapter<Employee> {
@@ -40,7 +42,8 @@ public class GridViewAdapter extends ArrayAdapter<Employee> {
         Button btnCall = v.findViewById(R.id.btnCall);
         Button btnMessage = v.findViewById(R.id.btnMessage);
 
-        img.setImageResource(employee.getImageId());
+//        img.setImageResource(employee.getImageId());
+        Picasso.get().load(employee.getImageId()).into(img);
         txtName.setText(employee.getName());
 
         btnCall.setOnClickListener(new View.OnClickListener() {

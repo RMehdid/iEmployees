@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
@@ -25,8 +26,10 @@ public class NewEmployeeAdapter extends DialogFragment {
     private static final int PICK_IMAGE_REQUEST = 1;
 
     private Employee employee;
+    private String image;
 
-    NewEmployeeAdapter() { }
+    NewEmployeeAdapter() {
+    }
 
     NewEmployeeAdapter(Employee employee) {
         this.employee = employee;
@@ -50,6 +53,7 @@ public class NewEmployeeAdapter extends DialogFragment {
 
             EditText editEmail = view.findViewById(R.id.emailTextField);
             editEmail.setText(employee.getEmail());
+
         }
 
         Button pickImageButton = view.findViewById(R.id.image_picker_button);
@@ -75,7 +79,8 @@ public class NewEmployeeAdapter extends DialogFragment {
                         String phone = editPhone.getText().toString();
                         String email = editEmail.getText().toString();
 
-                        Employee newEmployee = new Employee(name, phone, email, R.drawable.profile_placeholder);
+                        int l = R.drawable.profile_placeholder;
+                        Employee newEmployee = new Employee(name, phone, email, image);
 
                         DatabaseHelper dbHelper = new DatabaseHelper(requireContext());
 
@@ -85,8 +90,8 @@ public class NewEmployeeAdapter extends DialogFragment {
 
                         } else {
                             dbHelper.addEmployee(newEmployee);
-                            Intent intent = new Intent(getContext(),MainActivity.class);
-                            intent.putExtra("test","employer ajouter");
+                            Intent intent = new Intent(getContext(), MainActivity.class);
+                            intent.putExtra("test", "employer ajouter");
                             startActivity(intent);
                         }
                     }
@@ -102,8 +107,8 @@ public class NewEmployeeAdapter extends DialogFragment {
                 public void onClick(DialogInterface dialog, int id) {
                     DatabaseHelper dbHelper = new DatabaseHelper(requireContext());
                     dbHelper.deleteEmployee(employee.getId());
-                    Intent intent = new Intent(getContext(),MainActivity.class);
-                    intent.putExtra("test","employer supprimer");
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    intent.putExtra("test", "employer supprimer");
                     startActivity(intent);
                 }
             });
@@ -129,7 +134,10 @@ public class NewEmployeeAdapter extends DialogFragment {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             Uri selectedImageUri = data.getData();
             assert selectedImageUri != null;
-            employee.setImageId(selectedImageUri.getPort());
+
+            Log.d("ImageUri", "" + selectedImageUri);
+            image = "" + selectedImageUri;
+//            employee.setImageId("" + selectedImageUri);
         }
     }
 }

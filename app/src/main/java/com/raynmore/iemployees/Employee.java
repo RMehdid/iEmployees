@@ -7,9 +7,9 @@ public class Employee {
     private String phoneNumber;
 
     private String email;
-    private int imageId;
+    private String imageId;
 
-    public Employee(int id, String name, String phoneNumber, String email, int imageId) {
+    public Employee(int id, String name, String phoneNumber, String email, String imageId) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -17,7 +17,7 @@ public class Employee {
         this.imageId = imageId;
     }
 
-    public Employee(String name, String phoneNumber, String email, int imageId) {
+    public Employee(String name, String phoneNumber, String email, String imageId) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -32,11 +32,11 @@ public class Employee {
         this.id = id;
     }
 
-    public int getImageId() {
+    public String getImageId() {
         return imageId;
     }
 
-    public void setImageId(int imageId) {
+    public void setImageId(String imageId) {
         this.imageId = imageId;
     }
 

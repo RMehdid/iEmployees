@@ -107,7 +107,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String name = cursor.getString(1);
                 String phone = cursor.getString(2);
                 String email = cursor.getString(3);
-                int image = cursor.getInt(4);
+                String image = cursor.getString(4);
 
                 employees.add(new Employee(id, name, phone, email, image));
             } while (cursor.moveToNext());

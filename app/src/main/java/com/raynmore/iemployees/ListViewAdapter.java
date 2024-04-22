@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class ListViewAdapter extends ArrayAdapter<Employee> {
@@ -42,7 +44,8 @@ public class ListViewAdapter extends ArrayAdapter<Employee> {
         Button btnCall = v.findViewById(R.id.btnCall);
 
         assert employee != null;
-        img.setImageResource(employee.getImageId());
+//        img.setImageResource(employee.getImageId());
+        Picasso.get().load(employee.getImageId()).into(img);
         txtName.setText(employee.getName());
         Button btnMessage = v.findViewById(R.id.btnMessage);
 
