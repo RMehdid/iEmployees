@@ -1,25 +1,25 @@
 package com.raynmore.iemployees;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewStub;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.google.android.material.textfield.TextInputEditText;
-
-import java.security.KeyPairGenerator;
 import java.util.ArrayList;
 import java.util.List;
+import android.Manifest;
 
 public class MainActivity extends AppCompatActivity {
     private SearchView recherche;
@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
     static final int VIEW_MODE_LIST = 0;
     static final int VIEW_MODE_GRID = 1;
+
+    private static final int PERMISSION_REQUEST_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"done",Toast.LENGTH_SHORT).show();
             /**list.performClick();**/
 
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission not granted, request it
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    PERMISSION_REQUEST_CODE);
         }
 
         stubList = findViewById(R.id.stub_list);
@@ -140,28 +150,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    /**private void performSearch(String query) {
-        // Création d'une instance de DatabaseHelper
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-
-        // Utilisation de la méthode searchEmployees(query) pour rechercher des employés
-        ArrayList<Employee> searchResults = dbHelper.searchEmployees(query);
-
-        // Mettre à jour votre liste ou grille avec les résultats de la recherche
-        updateEmployeeList(searchResults);
-    }
-
-    private void updateEmployeeList(ArrayList<Employee> employees) {
-        // Mettez à jour votre liste ou grille avec les employés fournis
-        // Par exemple, si vous utilisez un adaptateur, vous pouvez appeler notifyDataSetChanged() sur cet adaptateur
-        if (currentViewMode == VIEW_MODE_LIST) {
-            ListViewAdapter listViewAdapter = new ListViewAdapter(this, R.layout.list_item, employees);
-            listView.setAdapter(listViewAdapter);
-        } else {
-            GridViewAdapter gridViewAdapter = new GridViewAdapter(this, R.layout.grid_item, employees);
-            gridView.setAdapter(gridViewAdapter);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, proceed with image picking
+                // Your code to initiate image picking here
+            } else {
+                Toast.makeText(this, "You denied request to gallery", Toast.LENGTH_SHORT).show();
+            }
         }
-    }**/
-
+    }
 }
