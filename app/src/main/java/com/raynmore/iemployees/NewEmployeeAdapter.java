@@ -113,7 +113,9 @@ public class NewEmployeeAdapter extends DialogFragment {
     }
 
     private void pickImage() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
         if (intent.resolveActivity(requireContext().getPackageManager()) != null) {
             startActivityForResult(intent, PICK_IMAGE_REQUEST);
         } else {
